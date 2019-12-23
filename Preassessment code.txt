@@ -1,0 +1,25 @@
+//Ayush Hate Pre assessment
+
+import java.util.*;
+
+public class Test {
+
+	public static void main(String args[]) {
+		Scanner s = new Scanner(System.in);
+		String str = s.next();
+		String rev = "";
+		int count = 0;
+		for(int i = 0; i < str.length(); i++)
+		{
+			if(str.charAt(i).equals('a') || str.charAt(i).equals('e') || str.charAt(i).equals('i') || str.charAt(i).equals('o') || str.charAt(i).equals('u')) 
+				count++;
+		}
+		System.out.println("Vowel Count = "+count+"\nReversed string is: ");
+		for(int i = str.length()-1; i >= 0 ; i--)
+		{
+			rev += str.charAt(i);
+		}
+		System.out.print(rev);
+
+	}
+}
