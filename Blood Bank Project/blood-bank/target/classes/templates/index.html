@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="ISO-8859-1">
+        <title>Application</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+            <style>
+
+.navbar-brand>img {
+  height: 50%;
+  padding: 5px; /* firefox bug fix */
+  width: auto;
+}
+
+              body {
+  background-image: url('Watermark.jpg');
+          }
+      
+          .top{
+            margin-top: 50px;
+          }
+
+
+      .leftist{
+        
+          
+          float: left;
+      }
+      .rightist{
+      
+          float: right;
+      }
+
+                img {
+                    /* margin-top: 50px; */
+                  border: 3px solid #000000; /* Gray border */
+                  border-radius: 7px;  /* Rounded border */
+                   /* padding: 5px; Some padding */
+                  width: 150px; /* Set a small width */
+                  opacity: 0.9;
+                }
+                
+                /* Add a hover effect (blue shadow) */
+                img:hover {
+                  box-shadow: 0 0 2px 2px #000000;
+                }
+
+                  .modal-header, h4, .close {
+                  background-color: darkred;
+                  color:white !important;
+                  text-align: center;
+                  font-size: 30px;
+                  }
+                .modal-footer {
+                  background-color: #f9f9f9;
+                 }
+                </style>
+    
+        </head>
+    
+    <body>
+    
+        <div class="container-fluid" >
+		
+		<script>
+		
+		function popUp(){
+			window.alert("Sorry! You are not Eligible.");
+//			window.location.href="index.html";
+			}
+		
+		</script>
+          
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#"><img src="Brand.jpg"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                
+              </ul>
+             
+            </div>
+          </nav>
+              <div class="top">
+                <div class="rightist">
+				<form th:action="@{/recipientRegistration}" method="POST">
+                  <button type="submit"><img src="RECIPIENT.jpg" alt="Recipient" style=" width:450px"  ></button>
+				 </form>
+              </div>
+              <div class="leftist">
+                <button type="button" class="btn btn-default btn-lg " id="donorBtn" data-toggle="modal" data-target="#myModal">
+                  <img src="DONOR.jpg" alt="Recipient" style=" width:450px" >
+                </button>
+                <div class="modal fade" id="myModal" role="dialog">
+                  <div class="modal-dialog">
+                  
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                       <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> --> 
+                        <h4 class="modal-title" style="text-align: center;">Donor Screening Process</h4>
+                      </div>
+                      <div class="modal-body">
+                          <div class="form-group">
+                            <label for="gender" class="col-sm-10">Is your less than 16 years?</label>
+                            <label class="radio-inline col-sm-offset-10 col-sm-2">
+                                <input type="radio" name="age" required onclick="popUp()">Yes
+                              </label>
+                              <label class="radio-inline">
+                                <input type="radio" name="age">No
+                              </label>
+                          </div>
+                          <div class="form-group">
+                            <label for="gender" class="col-sm-10">Have you donated blood in last three months?</label>
+                            <label class="radio-inline col-sm-offset-10 col-sm-2">
+                                <input type="radio" name="lastdonated" required onclick="popUp()">Yes
+                              </label>
+                              <label class="radio-inline">
+                                <input type="radio" name="lastdonated">No
+                              </label>
+                          </div>
+                          <div class="form-group">
+                                <label for="gender" class="col-sm-10">Did you have meal/snack in last 4 hours?</label>
+                                <label class="radio-inline col-sm-offset-10 col-sm-2">
+                                    <input type="radio" name="lastmeal" required onclick="popUp()">Yes
+                                  </label>
+                                  <label class="radio-inline">
+                                    <input type="radio" name="lastmeal">No
+                                  </label>
+                        </div>
+                        <div class="form-group">
+                          <label for="gender" class="col-sm-10">Do you have any of these body piercing (tongue, nose, belly button, genital)?</label>
+                          <label class="radio-inline col-sm-offset-10 col-sm-2">
+                              <input type="radio" name="piercing" required onclick="popUp()">Yes
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="piercing">No
+                            </label>
+                        </div>
+                        <div class="form-group">
+                          <label for="gender" class="col-sm-10">Is your BP not under control [i.e. systolic (first number) < 180 and diastolic (second number) < 100 ?</label>
+                          <label class="radio-inline col-sm-offset-10 col-sm-2">
+                              <input type="radio" name="bp" required onclick="popUp()">Yes
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="bp">No
+                            </label>
+                        </div>
+                        <div class="form-group">
+                          <label for="gender" class="col-sm-10">Are you diabetic?</label>
+                          <label class="radio-inline col-sm-offset-10 col-sm-2">
+                              <input type="radio" name="diabetic" required onclick="popUp()">Yes
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="diabetic">No
+                            </label>
+                        </div>
+                        <div class="form-group">
+                          <label for="gender" class="col-sm-10">TTI Status : Do you have any of the following diseases (Hepatitis B, Hepatitis C, HIV/AIDS, Syphilis, Malaria)</label>
+                          <label class="radio-inline col-sm-offset-10 col-sm-2">
+                              <input type="radio" name="diseases" required onclick="popUp()">Yes
+                            </label>
+                            <label class="radio-inline">
+                              <input type="radio" name="diseases">No
+                            </label>
+                        </div>
+						<form th:action="@{/donorRegistration}" method="POST" style="padding: 12px 12px 12px 12px;">
+                    	   <button type="submit">Submit Screening</button>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    </body>
+    
+    </html>

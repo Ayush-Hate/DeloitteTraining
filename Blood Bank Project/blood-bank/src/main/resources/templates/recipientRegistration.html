@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Registration Page</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Blood Bank</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#">Home</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <form class="navbar-form" action="#" th:action="@{/loginRecipient}" th:object="${email}" method="POST" >
+            <div class="form-group">
+              <input type="text" class="form-control" id="email" name="email" placeholder="Login with Email..."/>
+            </div>
+            <button type="submit">Login</button>
+          </form> 
+    </ul>
+  </div>
+</nav>
+
+<div>
+    <img src="blood_drop.jpg" alt="blood_drop" style="width:100px;height:100px;margin-left:15px;">
+    <h style="font-size: 50px; padding: 100px 50px 50px 50px;font-family:Georgia, 'Times New Roman', Times, serif;">Blood Bank</h>
+ </div>
+  
+<div class="container">
+  <h3 style="color:darkred; font-weight: bolder; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Register as a Blood Recipient</h3>
+</div>
+<form action="#" th:action="@{/registerRecipient}" th:object="${recipient}" method="POST" style="padding: 25px 100px 100px 100px;">
+    <!-- Login Info -->
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-md-3 col-form-label pt-0" style="color: firebrick;">LOGIN INFORMATION</legend>
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" class="form-control username" id="firstName" placeholder="First name..." name="firstName"/>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" class="form-control username" id="lastName" placeholder="Last name..." name="lastName"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" class="form-control email" id="email" placeholder="Email..." name="email"/>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <!-- Donor Info  -->
+    <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-md-3 col-form-label pt-0" style="color: firebrick;">DONOR INFORMATION</legend>
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label for="dob">Date Of Birth:</label>
+                    <input type="dob" class="form-control username" id="dateOfBirth" placeholder="Date Of Birth..." name="dateOfBirth"/>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight:</label>
+                    <input type="number" class="form-control password" id="weight" placeholder="Weight..." name="weight"/>
+                </div>
+                <div class="form-group">
+                    <label for="bloodgroup">Blood Group:</label>
+					<input type="text" class="form-control username" id="bloodgroup" placeholder="Blood Group..." name="bloodgroup"/>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+     <!-- Contact Info -->
+     <fieldset class="form-group">
+        <div class="row">
+            <legend class="col-md-3 col-form-label pt-0" style="color: firebrick;">CONTACT INFORMATION</legend>
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" class="form-control username" id="phone" placeholder="Mobile Number..." name="phone">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <!-- Submit Button  -->
+    <div class="form-group row">
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary btn-customized btn-lg">REGISTER</button>
+        </div>
+    </div>
+</form>
+
+</body>
+</html>

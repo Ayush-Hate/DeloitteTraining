@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Recipient</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<style>
+
+#don{
+    display: none;
+}
+
+#pro{
+    display: none;
+}
+
+/* #det{
+    display: none;
+} */
+
+table{
+    border: 2px;
+}
+
+.col-sm-3{
+    height:700px;
+}
+
+.btn-xl{
+    font-size:xx-large;
+    background-color: black;
+}
+
+.leftist{
+        
+          
+        float: left;
+    }
+    .rightist{
+    
+        float: right;
+    }
+
+</style>
+
+</head>
+<body>
+
+<div class="container-fluid">
+   
+  <div class="row">
+    
+    
+    <div class="col-sm-3" style="background-image: url('Watermark.jpg');"><b style="font-size: x-large;">Dashboard</b>
+    <div style="margin-top:30px">
+
+		<form action="#" th:action="@{/viewRecipient}" method="GET"> 
+        <button class="btn btn-primary btn-xl" id="btn1" onclick="myDetails()">Recipient Details</button></br></br></br>
+        </form>
+		<form action="#" th:action="@{/requestBloodView}" method="GET">
+		<button class="btn btn-primary btn-xl" id="btn2" onclick="myDonation()">Request Blood</button></br></br></br>
+        </form>
+		<script>
+
+            function myDetails() {
+                document.getElementById("pro").style.display="none";
+                document.getElementById("don").style.display="none";
+              
+                var x = document.getElementById("det");
+                    if (x.style.display == "block") {
+                        x.style.display = "none";
+                    } else {
+                        x.style.display = "block";
+                    }
+            }
+    
+                function myDonation() {
+
+                    document.getElementById("det").style.display="none";
+                document.getElementById("pro").style.display="none";
+                    var x = document.getElementById("don");
+                    if (x.style.display == "block") {
+                        x.style.display = "none";
+                    } else {
+                        x.style.display = "block";
+                    }
+            }
+            
+    
+            function myProfile() {
+
+                document.getElementById("det").style.display="none";
+                document.getElementById("don").style.display="none";
+                var x = document.getElementById("pro");
+                    if (x.style.display == "block") {
+                        x.style.display = "none";
+                    } else {
+                        x.style.display = "block";
+                    }
+            }
+            </script>
+        
+    
+    </div>
+    </div>
+
+    <div class="col-sm-9" style="background-color:lavenderblush;"><b>Info</b>
+    
+    <div id="det">
+        <div class="leftist">
+            <table th:each="recipient : ${recipientList}">
+			<tr>
+				<td>Recipient ID</td>
+				<td th:text="${recipient.recipientId}"></td>
+			</tr>
+			<tr>
+				<td>First Name</td>
+				<td th:text="${recipient.firstName}"></td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td th:text="${recipient.lastName}"></td>
+			</tr>
+			<tr>
+				<td>Email</td>
+				<td th:text="${recipient.email}"></td>
+			</tr>
+			<tr>
+				<td>Phone</td>
+				<td th:text="${recipient.phone}"></td>
+			</tr>
+			<tr>
+				<td>Date Of Birth</td>
+				<td th:text="${recipient.dateOfBirth}"></td>
+			</tr>
+			<tr>
+				<td>Weight</td>
+				<td th:text="${recipient.weight}"></td>
+			</tr>
+			<tr>
+				<td>Blood Group</td>
+				<td th:text="${recipient.bloodgroup}"></td>
+			</tr>
+		</table>
+        </div>
+       
+        <div class="rightist" >
+        <form action="#" th:action="@{/logoutRecipient}" method="POST">
+            <button class="btn btn-primary btn-xl" id="btn3">Logout</button></br></br></br>
+		</form>
+        </div> 
+
+    </div>
+    
+    <div id="don">
+			<form action="#" th:action="@{/requestBlood}" th:object="${bloodStockIdList}" method="POST">
+              <table>
+				<tr>
+					<th>Choose</th>
+					<th>Bottle ID&nbsp;&nbsp;</th>
+					<th>Donor ID&nbsp;&nbsp;</th>
+					<th>Blood Group&nbsp;&nbsp;</th>
+					<th>Donation Date&nbsp;&nbsp;</th>
+					<th>Hemoglobin Level&nbsp;</th>
+					<th>Platelet Count&nbsp;&nbsp;</th>
+				</tr>
+				<tr th:each="bottle : ${bloodStockList}">
+					<td><input type="checkbox" id="bottleId" name="bottleId" th:value="${bottle.bottleId}"/></td>
+					<td th:text="${bottle.bottleId}"></td>
+					<td th:text="${bottle.donor.getDonorId()}"></td>
+					<td th:text="${bottle.bloodgroup}"></td>
+					<td th:text="${bottle.donationDate}"></td>
+					<td th:text="${bottle.hemoglobinLevel}"></td>
+					<td th:text="${bottle.plateletCount}"></td>
+				</tr>
+			  </table>
+			</form>
+     
+    </div>
+    
+    <div id="pro">
+        <p >prfile</p>
+        
+        
+    </div>
+
+  </div></div>
+</div>
+</div>    
+</body>
+</html>
